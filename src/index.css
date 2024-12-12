@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input {
+  border: 1px solid rgba(128, 128, 128, 0.575);
+  padding: 4px;
+}
+
+select {
+  border: 1px solid rgba(128, 128, 128, 0.575);
+  padding: 4px;
+}
+
+/* Ensure the table layout for printing */
+@media print {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 4px 8px;
+    text-align: left;
+    font-size: 12px; /* Reduce font size for printing */
+  }
+
+  th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  /* Hide pagination buttons in print */
+  .pagination {
+    display: none;
+  }
+
+  /* Add page breaks to avoid cutting rows in the middle */
+  table {
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+  td {
+    white-space: normal;
+  }
+
+  .side-bar {
+    display: none;
+  }
+  /* Hide last column when printing */
+  .last-column {
+    display: none;
+  }
+}
