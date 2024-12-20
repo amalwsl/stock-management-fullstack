@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
-import { Plus, Edit, Trash2 } from 'lucide-react';
+import { Plus, Edit, Trash2, Printer } from 'lucide-react';
 import { DataTable } from '../components/DataTable';
 import { Modal } from '../components/Modal';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -287,13 +287,21 @@ export default function ConsulationManagement() {
 
 
 
-  
+    const handlePrint = () => {
+      window.print();
+    };
 
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-900">Gestion des consultations</h1>
+
+        <div className='flex gap-4 print:hidden ' >
+        <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" onClick={handlePrint}>
+        <Printer className="w-4 h-4 mr-2" />  
+        Imprimer
+        </button>
         <button
           onClick={() => setIsAddModalOpen(true)}
           className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -301,6 +309,7 @@ export default function ConsulationManagement() {
           <Plus className="w-4 h-4 mr-2" />
           Ajouter une consultation
         </button>
+        </div>
       </div>
 
       <div className="mt-4">

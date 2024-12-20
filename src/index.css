@@ -12,53 +12,57 @@ select {
   padding: 4px;
 }
 
-/* Ensure the table layout for printing */
 @media print {
-  table {
-    border-collapse: collapse;
-    width: 100%;
+  /* Adjust page layout to horizontal */
+  @page {
+    size: landscape;
+    margin: 1cm;
   }
 
+  /* Reduce font size for better readability */
+  body {
+    font-size: 10px; /* Decrease font size */
+  }
+
+  /* Make sure the table fits within the page width */
+  table {
+    width: 100%;
+    table-layout: fixed; /* Prevent columns from overflowing */
+  }
+
+  /* Hide the last column */
+  .last-column {
+    display: none; /* Hide last column for printing */
+  }
+
+  input,
+  button {
+    display: none; /* Hide buttons for printing */
+  }
+
+  /* Adjust column width to squeeze 7 columns */
   th,
   td {
-    border: 1px solid #ddd;
-    padding: 4px 8px;
-    text-align: left;
-    font-size: 12px; /* Reduce font size for printing */
+    padding: 5px;
+    word-wrap: break-word;
+  }
+  td {
+    font-size: 12px; /* Adjust to make the text small */
+    word-wrap: break-word; /* Break long words to fit in the cell */
+    white-space: normal; /* Allow text to wrap */
+    overflow: hidden; /* Hide overflow */
   }
 
-  th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-  /* Hide pagination buttons in print */
-  .pagination {
-    display: none;
-  }
-
-  /* Add page breaks to avoid cutting rows in the middle */
-  table {
-    page-break-inside: auto;
-  }
-
-  tr {
+  /* Prevent overflow and add page breaks if needed */
+  .no-break {
     page-break-inside: avoid;
   }
 
+  /* Optionally, apply border adjustments to make content more compact */
+  table,
+  th,
   td {
-    white-space: normal;
-  }
-
-  .side-bar {
-    display: none;
-  }
-  /* Hide last column when printing */
-  .last-column {
-    display: none;
+    border: 1px solid black;
+    border-collapse: collapse;
   }
 }

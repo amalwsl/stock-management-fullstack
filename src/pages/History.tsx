@@ -3,10 +3,19 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import {  ArrowUpCircle, ArrowDownCircle, Edit, Trash2, PlusCircle, HelpCircle } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const History: React.FC = () => {
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState('Stock');
+  const navigate=useNavigate()
+    const { user } = useAuth();
+
+    if(user?.role!=="admin"){
+      navigate('/')
+    }
+  
 
   const { data: stockHistory } = useQuery({
     queryKey: ['stockHistory'],

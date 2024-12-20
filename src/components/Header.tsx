@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white shadow-sm print:hidden ">
       <div className="w-full  px-6  py-4">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-semibold text-gray-900">CRM de gestion des stocks</h1>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
-import { Plus, Edit, Trash2, TrendingDown, TrendingUp } from 'lucide-react';
+import { Plus, Edit, Trash2, TrendingDown, TrendingUp, Printer } from 'lucide-react';
 import { DataTable } from '../components/DataTable';
 import { Modal } from '../components/Modal';
 import { Part } from '../types';
@@ -345,6 +345,11 @@ export default function StockManagement() {
       console.error('Erreur lors de la soumission du formulaire:', error);
       alert(`Erreur lors de la soumission de la pièce : ${error instanceof Error ? error.message : 'Erreur inconnue'}`);
     }
+
+  };
+
+  const handlePrint = () => {
+    window.print();
   };
 
 
@@ -353,6 +358,11 @@ export default function StockManagement() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-900">Gestion des stocks</h1>
+        <div className='flex gap-4 print:hidden ' >
+        <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" onClick={handlePrint}>
+        <Printer className="w-4 h-4 mr-2" />  
+        Imprimer
+        </button>
         <button
           onClick={() => setIsAddModalOpen(true)}
           className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -360,6 +370,7 @@ export default function StockManagement() {
           <Plus className="w-4 h-4 mr-2" />
           Ajouter une pièce
         </button>
+        </div>
       </div>
 
       <div className="mt-4">

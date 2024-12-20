@@ -73,7 +73,7 @@ export function DataTable<T>({ data, columns, pageSize = 10 }: DataTableProps<T>
                 {row.getVisibleCells().map((cell, index) => (
                   <td
                     key={cell.id}
-                    className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${
+                    className={`px-6 py-4 whitespace-nowrap print:whitespace-normal  text-gray-500 ${
                       index === row.getVisibleCells().length - 1 ? 'last-column' : ''
                     }`} // Adding the same class to the last column
                   >

@@ -3,10 +3,19 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { Plus, Edit, Trash2 } from 'lucide-react';
 import { User } from '../types';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const UserManagement: React.FC = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
+   const navigate=useNavigate()
+      const { user } = useAuth();
+  
+      if(user?.role!=="admin"){
+        navigate('/')
+      }
+    
 
   const queryClient = useQueryClient();
 
